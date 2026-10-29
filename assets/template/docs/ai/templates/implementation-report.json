@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "task_id": "TASK-0000",
+  "spec_version": 1,
+  "head_sha": "<FINAL_HEAD_40_HEX>",
+  "acceptance": [
+    {
+      "id": "AC-1",
+      "status": "BLOCKED",
+      "evidence": "TODO: 实现、行为证据与定位；未核验不可写 PASS"
+    }
+  ],
+  "checks": [
+    {
+      "id": "CHECK-1",
+      "command": "python3 scripts/ai_workflow.py validate",
+      "status": "BLOCKED",
+      "evidence": "TODO: 实际退出码、日志和 SHA256"
+    },
+    {
+      "id": "CHECK-2",
+      "command": "git diff --check",
+      "status": "BLOCKED",
+      "evidence": "TODO: 实际结果"
+    }
+  ],
+  "deviations": [],
+  "risks": [],
+  "rollback": "TODO: 撤销与恢复步骤"
+}

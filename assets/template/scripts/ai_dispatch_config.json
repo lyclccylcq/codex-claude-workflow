@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "project_name": "Project",
+  "base_branch": "main",
+  "claude_config_dir": "~/.claude",
+  "claude_surface": "cli",
+  "workspace_trace": true,
+  "require_worker_handoff": true,
+  "max_handoff_bytes": 24000,
+  "worktree_root": "~/.claude-worktrees/project",
+  "environment_check_commands": [],
+  "check_helpers": [],
+  "allowed_checks": {
+    "python3 scripts/ai_workflow.py validate": [
+      "python3",
+      "scripts/ai_workflow.py",
+      "validate"
+    ],
+    "python3 -m unittest discover -s scripts/tests -q": [
+      "python3",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "scripts/tests",
+      "-q"
+    ],
+    "git diff --check": [
+      "git",
+      "diff",
+      "--check"
+    ]
+  },
+  "completion_policy": {
+    "merge_authorized": false,
+    "authorization_note": "No standing authorization for publication, merging or deployment. Follow the current project task authorization.",
+    "merge_method": "merge",
+    "required_checks": [
+      "workflow-contract"
+    ],
+    "check_timeout_seconds": 900,
+    "poll_interval_seconds": 10,
+    "delivery_checks": [
+      "python3 scripts/ai_workflow.py validate",
+      "python3 -m unittest discover -s scripts/tests -q",
+      "git diff --check"
+    ]
+  }
+}

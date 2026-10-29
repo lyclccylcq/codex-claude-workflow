@@ -1,0 +1,31 @@
+name: AI workflow contract
+on:
+  pull_request:
+  push:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  workflow-contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - run: python3 scripts/ai_workflow.py validate
+      - run: python3 -m unittest discover -s scripts/tests -q
+      - name: Validate declared AI task evidence
+        if: github.event_name == 'pull_request'
+        env:
+          EVENT_PATH: ${{ github.event_path }}
+        run: |
+          python3 - <<'PY'
+          import json, os, subprocess
+          path = os.environ['EVENT_PATH']
+          event = json.load(open(path))
+          if any(line.startswith('AI-Task:') for line in (event['pull_request'].get('body') or '').splitlines()):
+              subprocess.run(['python3', 'scripts/ai_workflow.py', 'ci', '--event', path], check=True)
+          PY

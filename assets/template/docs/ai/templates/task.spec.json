@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "task_id": "TASK-0000",
+  "spec_version": 1,
+  "status": "DRAFT",
+  "title": "TODO: 可独立验收的局部任务",
+  "objective": "TODO: 用户可观察的目标和成功标准",
+  "architecture": [
+    "TODO: 当前任务的实现要求和必要项目约束"
+  ],
+  "non_goals": [
+    "TODO: 本轮不处理的范围"
+  ],
+  "allowed_paths": [
+    "src/TODO.py",
+    "tests/test_TODO.py"
+  ],
+  "worker_context": [
+    {
+      "path": "src/TODO.py",
+      "start_line": 1,
+      "end_line": 80
+    }
+  ],
+  "review_mode": "full",
+  "acceptance_criteria": [
+    {
+      "id": "AC-1",
+      "requirement": "TODO: 可判定的行为要求",
+      "verification": "TODO: 行为测试或实际验收步骤"
+    }
+  ],
+  "checks": [
+    {
+      "id": "CHECK-1",
+      "command": "python3 scripts/ai_workflow.py validate",
+      "required": true
+    },
+    {
+      "id": "CHECK-2",
+      "command": "git diff --check",
+      "required": true
+    }
+  ],
+  "risks": [
+    "TODO: 数据兼容、运行环境与未验证集成"
+  ],
+  "rollback": "TODO: 撤销与数据恢复步骤",
+  "review_budget": {
+    "max_diff_bytes": 100000
+  }
+}

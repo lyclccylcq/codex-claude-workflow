@@ -1,0 +1,4 @@
+interface:
+  display_name: "Codex 管理 · Claude 执行"
+  short_description: "为新项目建立 Codex 负责人、Claude 局部工单执行与审查工作流"
+  default_prompt: "使用 $codex-claude-workflow 为当前项目建立统一的工单、工作树、Claude 实现和 Codex 验收流程。"
